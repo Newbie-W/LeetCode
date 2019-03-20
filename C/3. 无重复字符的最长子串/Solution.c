@@ -23,19 +23,19 @@ int lengthOfLongestSubstring(char* s) {
     for (int j=0; j<len-1; j++)
     {
         
-        memset(ans,0,100010);
-		k=0;
+	memset(ans,0,100010);
+	k=0;
         //an=0;
-		ans[k++]=s[j];
-		for (int i=j+1;i<len; i++)
+	ans[k++]=s[j];
+	for (int i=j+1;i<len; i++)
+	{
+		if (strchr(ans,s[i])==NULL) 
 		{
-			if (strchr(ans,s[i])==NULL) 
-			{
-				ans[k++]=s[i];
-				if (strstr(s,ans)==NULL) ans[--k]=0;
-                if (k>an) an = k;
-			}
+			ans[k++]=s[i];
+			if (strstr(s,ans)==NULL) ans[--k]=0;
+                	if (k>an) an = k;
 		}
+	}
         if (k>=('~'-'a')) break;
     }
     return an;
