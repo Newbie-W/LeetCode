@@ -10,6 +10,10 @@
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
+ 
+ /*
+ 迭代方式
+ */
 class Solution {
 public:
     ListNode* reverseList(ListNode* head) { //无头结点
@@ -27,5 +31,23 @@ public:
         }
         cur->next = pre;
         return cur;
+    }
+};
+
+/*
+递归方式
+*/
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) { //无头结点
+        if (head==NULL)
+            return NULL;
+        ListNode *cur = head;
+        ListNode *rest = cur->next;
+        if (rest == NULL) return head;
+        rest = reverseList(rest);
+        cur->next->next = cur;
+        cur->next = NULL;
+        return rest;
     }
 };
